@@ -1,0 +1,382 @@
+%% Template base para a elaboração do trabalho completo a ser enviado ao XIV Simpósio Brasileiro de Engenharia Física 
+
+\documentclass[por]{Template_SBEF}
+
+% Título do trabalho
+\title{ESTIMATIVA DE PARÂMETROS PARA PROCESSOS CROMATOGRÁFICOS EM LEITO MÓVEL SIMULADO}
+
+% Título curto
+\shorttitle{ESTIMATIVA DE PARÂMETROS PARA PROCESSOS CROMATOGRÁFICOS}
+      
+% Autores
+\author[1]{Pedro Pacheco Mendes Filho}
+\author[2]{Claudir Oliveira}
+\author[3]{Josecley Fialho Góes}
+
+% Afiliações dos autores
+\affil[1]{Instituto de Engenharia e Geociência, UFOPA, Santarém - Pará, Brasil}
+\affil[2]{Instituto de Ciências da Educação, UFOPA, , Santarém - Pará, Brasil}
+\affil[3]{Instituto de Engenharia e Geociência, UFOPA, Santarém - Pará, Brasil}
+
+% Sobrenome do primeiro autor
+\firstauthor{Pacheco, Pedro}
+
+% correspondência principal
+\email{domprechecopa@gmail.com}            
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+
+% Iniciar documento
+\begin{document}
+\resumo{Em aplicações nas indústrias, a cromatografia em sistema de Leito Móvel Simulado (LMS) é utilizado na separação e purificação de misturas. Na modelagem matemática dos fenômenos envolvidos, a estimativa de parâmteros para as etapas de separação é um fator fundamental para conseguir grandes avanços no processo de transporte de massa. O objetivo deste trabalho consiste no uso da abordagem de problemas inversos para determinar parâmetros em um sistema de LMS, composto por oito colunas e quatro seções, usando a estimativa por \textit{Máxima Verossimilhança}  e \textit{Máximo a Posteriori} via algoritmo de Evolução Diferencial. Utilizou-se o modelo de Transporte Dispersivo a representação das colunas que compôem o LMS e na solução do problema direto considerou-se uma simulação de separação do 1,1’-bi-2-naftol, por ser um dos constituintes bastante procurado em processos quiral. A isoterma bi-Langmuir foi usada para descrever o equilíbrio entre as fases líquida e sólida na separação dos enantiômeros. Para a solução do problema inverso, a modelagem matemática de problema direto foi validada por meio de dados experimentais obtidos na literatura. O sistema de equações diferenciais resultante da modelagem das colunas do LMS é resolvido via método de Runge-Kutta de quarta ordem.}
+
+%palavras-chave
+\palabrasclave{Problemas Inversos, Estimativa de Parâmetros, Método Estocástico, Separação de Substância, Transporte de Massa.}
+
+% Insert here the abstract in English language
+\abstract{In industrial applications the chromatography in Simulated Moving Bed(SMB) is used in separation and purification of mixtures. In the mathematical modeling of phenomena involved, the estimation of parameters for the stage of separation is a fundamental factor in greater progress in mass transport process. The objective of this work is to use the approach of inverse problem to determine parameters in a SMB system, consisting of eight columns and four sections, using the \textit{Maximum-Likelihood Estimation}(MLE) and \textit{Maximum a Posteriori}(MAP) via algorithm of Differential Evolution. The Dispersive Transport model was used to representation of columns that compose the SMB and solve the direct problem it was considered a separation simulation of 1,1’-bi-2-naphthol, being one of the constituents most sought in chiral process. The bi-Langmuir isotherm was used to describe the balance between the liquid and solid phases in the separation of the enantiomers. For the solution of the inverse problem, the mathematical modeling of direct problem was validated by means of experimental data obtained in the literature. The system of differential equation resulting modeling of the SMB columns is resolved via Runge-Kutta 4th Order Method.}
+% Insert here the keywords of your work in English language
+\keywords{Inverse Problems, Estimation of Parameters, Method Stochastic, Separation of substances, Mass transport.}
+
+\maketitle
+\thispagestyle{fancy}
+\printcontactdata
+
+
+%Corpo principal do texto
+
+\section{Introdução}
+
+A cromatografia, largamente usada na indústria química e bioquímica, é um método de separação usado nas áreas de pesquisas e produção. Essa técnica baseia-se na presença de duas fases imiscíveis, onde elas normalmente determinam o método cromatográfico utilizado, que são a fase estacionária e a móvel. Nesse trabalho, a fase móvel é a solução que contém os componentes que se deseja separar. A fase estacionária é responsável pela separação dos componentes, pois a fase móvel move-se através dela, tornando possível a sua separação através de sua interação físico-química com a solução. 
+
+Então, durante a passagem da fase móvel um elemento da solução se encontra mais retido que o outro, resultando assim a migração diferencial dos componentes.
+
+Porém, o sistema de Leito Móvel Simulado (LMS) é descrito como várias colunas cromatográficas interligadas em série em regime de permutação das portas, tem sido bastante empregada na indústria pois permite a separação continua dos componentes, que possibilita uma maior recuperação e produção tornando o processo mais econômico [6]. Nesse trabalho, o sistema LMS é composto por oito colunas divididas em quatro seções.
+
+A técnica de separação cromatográfica possui um alto valor agregado, por isso, faz-se necessário o uso de ferramentas para estimar parâmetros operacionais para evitar o desperdício [1].
+
+O modelo matemático empregado para descrever a transferência de massa na coluna foi o Transporte Dispersivo que descreve fielmente a cinética de adsorção em leito fixos [9] e permite o uso da isoterma de bi-Langmuir.
+
+Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method of Line – MOL}) para resolver as equações diferenciais parciais que descreve o fenômeno de transporte de massa da coluna. Por diferenças finitas são resolvidas e transformadas em equações diferenciais ordinárias (EDO) e resolvidas pelo método Runge-Kutta de 4° ordem.
+
+Obtendo valores aceitáveis na modelagem do problema direto comparados a literatura. São analisadas estratégias para solução do problema inverso para estimar os parâmetros através desses dados obtidos. Para considerá-los como dados experimentais é necessário adicionar ruído, assim obtém-se valores experimentais sintéticos.
+
+A solução inversa é executada em duas etapas baseadas no uso da estimativa \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa, é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa, é a aplicação da estimativa com informação a Priori, onde é dado a estimativa de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
+
+Esse trabalho tem como premissa analisar as estimativas e a influência exercida pelo algoritmo de minimização, no caso é \textit{Evolução Diferencial.}
+
+
+\section{Modelo Matemático}
+   O modelo de Transporte Dispersivo usado, é criado a partir da primeira lei de Fick que são equações diferenciais que explica o funcionamento de fenômenos como a difusão de matéria. Nesse trabalho, descreverá o fenômeno de transferência de massa ao longo da coluna cromatográfica e o balanço de massa entre a fase líquida e sólida.
+\begin{equation}
+\frac{\partial C_{i,k}}{\partial t} + (\frac{1-\varepsilon_b}{\varepsilon_b}
+) K_{eff,i} (q_{i,k}^{eq} - q_{i,k}) = D_{ax} \frac{\partial^2 C_{i,k}}{\partial x^2} 
+- v_l \frac{\partial C_{i,k}}{\partial x}
+\end{equation}
+onde, 
+\begin{equation}
+i = A,B, k = 1,...,N_C, l = 1,...,N_S 
+\end{equation}
+em que A,B são os componentes da solução a ser separada, $N_s$ é o número de seções e $N_c$ número de colunas por seção. As propriedades, $\vareplison_b$ é a porosidade da coluna, o $v_l$ é a velocidade da fase móvel, e os coeficientes $D_{ax}$ e $k_{eff,i}$  são respectivamente, o coeficiente de dispersão axial e o coeficiente de transferência de massa[3].
+
+A variável  $q_{i,k}^{eq}$  é a isoterma competitiva de bi-Langmuir que consegue modelar o fenômeno de adsorção do enantiômero.
+\begin{equation}
+q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\frac{H_{i,2} C_{i,k}}{1+K_{A,2} C_{A,k} + K_{B,2} C_{B,k}}
+\end{equation}
+Onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, enquanto que, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio.
+O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Figura 1.
+
+Para utilizarmos diferenças finitas para encontrar a solução da equação diferencial ordinária, devemos definir a condição inicial e de contorno que foram abordadas por Silva [4] e usadas nesse trabalho, para correntes de extrato e rafinado na fase móvel, é
+\begin{equation}
+C_{i,k}(t,x_k = 0) = C_{i,k-1}(t, x_{k-1} = L_c), k = 2, ... , N_c
+\end{equation}
+e em meio as correntes de dessorvente e alimentação, as equações usadas como condições de contorno são,
+\begin{equation}
+C_{i,1}(t,x_1 = 0) = C_{i,N_c}(t,X_{N_c} = L_c) \frac{v_4}{v_3}
+\end{equation}
+\begin{equation}
+C_{i,5}(t,x_5 = 0) = \frac{v_2 C_{i,4}(t,x_4 = L_c) + v_fC_{i,f}}{v_3} 
+\end{equation}
+
+\begin{figure}[!tb] 
+ \centering
+  \includegraphics[width=.8\columnwidth]{Arquivos/figura1.png} 
+ \caption{Esquema do sistema LMS para oito colunas[Fonte: Oliveira, 2016].} \label{fig-1}
+\end{figure}
+
+em que a velocidade de alimentação e a concentração injetada do componente, são representadas respectivamente por, $v_f$ e $C_{i,f}$.
+
+Porém, a equação de advecção é usada na saída da coluna conforme[7] representado pela equação,
+\begin{equation}
+\frac{\partial C_{i,k}}{\partial t} = v_l \frac{\partial C_{i,k}}{\partial x_k}
+\end{equation}
+ e na fase estacionária a condição de contorno usada é,
+ \begin{equation}
+ q_{i,k}(t,x_k = L_c) = q_{i,k+1}(t, x_{k+1} = 0)
+ \end{equation}
+
+\section{Problema Direto}
+A solução do problema direto é essencial para o algoritmo estimar os parâmetros utilizados para os dados experimentais. Por isso, precise que ela seja fiel em simular os dados experimentais reportados na literatura.
+
+Para solucionar numericamente as Equações Diferenciais Parciais (EDP) com o Método de Linhas (MOL) é aplicada a aproximação utilizando a técnica da diferença centrada de segunda ordem para resolver a equação do termo difusivo, chegando à Equação 9,
+\begin{equation}
+\frac{\partial^2 C_{i,k}}{\partial x^2} = D_{ax}(\frac{C_{i,k}^{n,j-1} - 2C_{i,k}^{n,j} + C_{i,k}^{n,j+1}}{2\Delta x})
+\end{equation}
+Porém, para o termo advectivo utilizados a técnica da diferença centrada de dois pontos, resultando em
+\begin{equation}
+\frac{\partial C_{i,k}}{\partial x} = - v_l (\frac{C_{i,k}^{n,j+1} - C_{i,k}^{n,j-1}}{2\Delta x})
+\end{equation}
+Utilizamos então o método de Runge-Kutta de 4° Ordem, que é reconhecido pela sua acurácia, para solucionar o sistema de EDO.
+
+\subsection{Simulação do problema direto}
+Na simulação do modelo matemático utilizado, na Figura 2, observa-se uma ótima acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
+\begin{figure}[!tb] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/problema.pdf} 
+	\caption{Comparação do modelo matemático com os dados experimentais.} 
+\end{figure}
+
+Na Figura 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas são os dados encontrados pelo algoritmo.
+\section{Problema Inverso}
+A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
+, onde $y \in \makefrak{R}^m$ é quantidade medida e $x \in \makefrak{R}^$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Equação 11,
+\begin{equation}
+Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
+\end{equation}
+sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado [2], esses dados experimentais sintéticos são demonstrados na Figura 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
+\begin{figure}[!tb] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
+	\caption{Dados analíticos comparados aos dados experimentais sintéticos.} 
+\end{figure}
+O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori, onde essas se dividem em duas situações respectivamente,  quando não se tem nenhuma informação a priori e quando há informações.
+
+Essas estimativas permitem determinar dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
+\section{Máxima Verossimilhança}
+A estimativa por Máxima Verossimilhança (Maximum Likelihood Estimation – MLE) funciona através do ajuste de dados estimando os parâmetros através de modelos estatísticos. A função objetivo é a distância do modelo calculado e os dados experimentais. Quando se admite que o modelo é perfeito e as flutuações dos erros experimentais são conhecidas e com distribuição normal, tem-se a função de densidade de probabilidade dos desvios entre o experimento, que deve ser maximizada. Nesse caso, a função é dada por Kaipio \& Somersalo[5].
+\begin{equation}
+p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(Z)]^T W^{-1}[T-C(Z)])
+\end{equation}
+em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experimentais e calculados, $Z$ é o vetor de parâmetro, $W$ é a matriz de covariância dos erros experimentais e $N_d$ é a quantidade de dados experimentais.
+
+A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Equação 13, a qual resulta em parâmetros com variância mínima,
+\begin{equation}
+R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
+\end{equation}
+
+\section{Máximo a Posteriori(MAP)}
+Essa estimativa, se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros ma fpra de uma distribuição Gaussiana, e que $Y$ e $Z$ são independentes, e então, é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
+\begin{equation}
+p(Z|Y)= \frac{p(Y|Z)q(Z)}{p(Y)}
+\end{equation}
+onde $q(Z)$ é a probabilidade \textit{a priori}, ou seja, é a probabilidade da amostra para o parâmetro $Z$, podendo ser estimado pela Equação 15,
+\begin{equation}
+q(Z)=2\pi^{\frac{-N_{un}}{2}}|V^{-\frac{1}{2}}| \times exp(-\frac{1}{2}[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
+\end{equation} 
+sabendo que $\mu_pr$ é a informação a priori e $V$ é a matriz de covariância, e então aplicando a função de logaritmo natural ao teorema geral de Bayes, obtermos a Equação 16
+\begin{equation}
+ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
+\end{equation}
+que substituindo, na Equação 16, as Equações 15 e 12, e resolvendo e manipulando as equações é obtido a Equação 17,
+\begin{equation}
+ln(p(Z|Y)) = -\frac{1}{2}[(N_{un}+N_d)ln(2\pi)+ln|V^{-1}|+ln|W^{-1}|+F_{map}(Z)]
+\end{equation} 
+tomando que a função $F{map}(Z)$, é
+\begin{equation}
+F_{map}(Z)=([Y-C(Z)]^TW^{-1}[Y-C(Z)]+[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
+\end{equation}
+Supondo que vetor $Z$ maximiza $ln(p(Z|Y))$ é igual a $max(p(Z|Y))$, então implica na Equação 19,
+\begin{equation}
+_\mathbf{Z}^{max} p(Z|Y) \Leftrightarrow _\mathbf{Z}^{max} [ln(p(Z|Y))] \Leftrightarrow _\mathbf{Z}^{min} [F_{map}(Z)]
+\end{equation}
+onde $Z$ corresponde ao vetor das amostras aleatórias com média $\mu$ e matriz de covariância conhecida $V$ que introduzem informação \textit{a priori} a respeito do vetor $Z$. A minimização de $F_{map}$ produz estimativas de $Z$ que maximizam a distribuição \textit{a posteriori} $p(Z|Y)$.
+\section{Evolução Diferencial (DE)}
+O algoritmo de evolução diferencial é um algoritmo, que tem como finalidade a otimização de uma função, é eficiente e simples que se trata de um método estocástico que se inspira na teoria da evolução e seleção natural[8].
+
+Descrito como um algoritmo que tem como função a manipulação de uma população $N_{pop}$ indivíduos, que representam as soluções da otimização[11]. Ao passar das gerações, esses candidatos passas por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
+
+Inicialmente, é gerado uma população de números $N_pop$ a partir da Equação 20,
+\begin{equation}
+X_{i,j}=X_{j,lower}+r_{ij} (X_{j,upper}-X_{j,lower})
+\end{equation}
+onde $X_{j,lower}$ e $X_{j,upper}$ são intervalo de busca mínimo e máximo, respectivamente, $N_p$ é a quantidade de parâmetros e $r_{ij}$ é o número real aleatório gerado dentro do intervalo de 0 a 1.
+
+Após a geração da população entra em fase a parte de \textit{mutação} dos indivíduos. Todos os indivíduos da população são modificados através da Equação 21, onde é retirada a diferença entre dois indivíduos  diferentes $X_{l_2}$, $X_{l_3}$, escolhido aleatoriamente e feito produto com uma taxa de perturbação $F$, gerado aleatoriamente entre 0 e 2, e então somado ao vetor de referência $X_{l_1}$, para gerar um terceiro indivíduo.
+\begin{equation}
+X_{l,new}=X_{l_1} + F(X_{l_2} - X_{l_3})
+\end{equation}
+Sendo que esse novo indivíduo deve passar pela etapa de cruzamento, que é o processo de decisão para adicionar o novo indivíduo a população, se não, é mantido  indivíduo anterior $X_{l_1}$m representado pela Equação 22, que $C_r$ é a probabilidade de mutação, e $r_1$ é o número real aleatório do intervalo de 0 a 1.
+\begin{equation}
+X_l= \left\{\begin{matrix}
+X_{l,new}, \mathrm{se} r_1 < C_r \mathrm{ou} j = j_{rand}
+\\ X_{l_1}, \mathrm{caso contrário}
+
+\end{matrix}\right.
+\end{equation}
+
+\section{Resultados e Discussões}
+As análises de sensibilidade dos parâmetros, apresentado na literatura[3]m é essencial para verificar a sua influência nos perfis de concentrações das substâncias. Nas figuras, são apresentados gráficos de sensibilidade para o parâmetro $H_{A,1}$ e para o parâmetro $H_{B,1}$, respectivamente, mostrando que é possível estimar adequadamente os parâmetros $H_{i,1}$, sabendo os outros valores da isoterma de bi-Langmuir.
+
+
+
+%XXXXXXXXXXXXXX
+
+\begin{figure}[!tb] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/figura4.png} 
+	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,1}$ [Fonte: Oliveira, 2016]} 
+\end{figure}
+
+
+
+\begin{figure}[!tb] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/figura5.png} 
+	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,2}$ [Fonte: Oliveira, 2016]} 
+\end{figure}
+
+
+
+
+
+%XXXXXXXXXXXXX
+Sabendo a influência dos parâmetros no perfil de concentração é possível estimar a partir dos métodos de \textit{máxima verosimilhança} e \textit{máximo a posteriori}. Com 13 execuções foi possível analisar a estimativa a partir do método DE, para minimização da função objetivo, foi definido com probabilidade de mutação $C_r = 0,9$ e o número da população $N_p = 30$ como critério de parada sendo o número de gerações igual a 80, também definindo o intervalo de busca e os valores de referência de acordo com [10] para cada parâmetro, apresentado na Tab. 1.
+
+\begin{table}[!h]
+	\centering
+	\caption{Intervalo de busca e valores de referência.} \label{tabela-1}
+	{\small
+		\begin{tabular}{ccccc}			
+			\hline
+			\hline
+			\thead{Parâmetros} & \thead{Valor de Ref.} & \thead{$L_{min}; L_{max}$} \\
+			\hline
+			\hline
+			$H_{A,1}$ & 2,69 & $[1;3]$\\
+			$H_{A,2}$ & 0,1 & $[0;0,5]$\\
+			\hline
+			\hline
+	\end{tabular}}
+\end{table}
+No término das execuções, foi calculado o resultado para obter a média o desvio padrão e o coeficiente de variação desses parâmetros, da isoterma de bi-Langmuir para substância A, para estimativa MLE e MAP para serem apresentados na Tab. 2.
+
+
+\begin{table}[!h]
+	\centering
+	\caption{Intervalo de busca e valores de referência.} \label{tabela-2}
+	{\small
+		\begin{tabular}{ccccc}			
+			\hline
+			\hline
+			\thead{} &  \thead{Parâmetros} & \thead{$H_{A,1}$} & \thead{$H_{A,2}$}\\
+			\hline
+			\hline
+			 & Média($\mu$) & 2,6782 & 0,1636 \\
+			 MLE & Desvio($\sigma$) & 0,0098 & 0,0364\\
+			 & ($\sigma / \mu) \times 100$ & 0,3641 & 22,2310 \\
+			 \hline
+			 & Média($\mu$) & 2,6887 & 0,1184\\
+			 MAP & Desvio($\sigma$) & 0,0088 & 0,0309\\
+			 & ($\sigma / \mu) \times 100$ & 0,3285 & 26,0985 \\
+			\hline
+			Valor de Ref. &  & 2,69 & 0,1 \\
+			\hline
+	\end{tabular}}
+\end{table}
+
+
+ 
+\section{Conclusão}
+
+
+\section{Referências}
+
+\noindent[1] A. L. J. BIHAIN, “Desenvolvimento e avaliação de
+novas abordagens de modelagem de
+processos de separação em leito móvel simulado”, Tese
+(Doutorado em Modelagem
+Computacional) – Instituto Politécnico, Universidade do
+Estado do Rio de Janeiro, 2014
+\vspace{10pt}
+
+
+\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA
+and J. L. JUNIOR and A. J. S. NETO,
+“Estimação de parâmetros cinéticos de transferência de
+massa em cromatografia
+utilizando o número de estágios de equilíbrio como
+parâmetro de ajuste”, In: ENCONTRO
+DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
+Modelagem Computacional. Uberlândia - MG, 2012.
+\vspace{10pt}
+
+
+\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA and J. L. JUNIOR and A. J. S.  NETO,
+“Estimação de parâmetros cinéticos de transferência de massa em cromatografia
+utilizando o número de estágios de equilíbrio como parâmetro de ajuste”, In: ENCONTRO
+DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
+Modelagem Computacional. Uberlândia - MG, 2012.
+\vspace{10pt}
+
+
+\noindent[3] C. OLIVEIRA, “Solução de problemas diretos e inversos para separação cromatográfica
+em equipamentos de Leito Móvel Simulado”, 128f. Dissertação (Doutorado em Modelagem Computacional) – Universidade do Estado do Rio de Janeiro, 2016.
+\vspace{10pt}
+
+
+\noindent[4] E. A. B. SILVA, “Modelagem e Simulação Numérica de uma Unidade de Leito Móvel
+Simulado”, 2000. 140f. Dissertação (Mestrado em Engenharia Química) - Universidade
+Federal de Santa Catarina, 2000.
+\vspace{10pt}
+
+
+\noindent[5] E. S. J KAIPIO, “ Statistical and Computational Inverse Problems”, New York: Springer, p. 339,
+2005
+\vspace{10pt}
+
+
+\noindent[6] M. A. CREMASCO and B. J. HRITZKO and N. H. L. WANG, “Experimental Purification
+of Paclitaxel from a complex mixture of Taxanes using a Simulated Moving Bed”,
+Brazilian Journal of Chemical Engineering, v. 26, n. 1, p. 207-218, 2009.
+\vspace{10pt}
+
+
+\noindent[7] J. HAAG and V. A. WOUWER and S. LEHOUCQ and P. SAUCEZ, “ Modeling and
+simulation of a SMB chromatographic process designed for enantioseparation”, Control
+Eng. Pract. , n. 9, v. 921, 2001.
+\vspace{10pt}
+
+
+\noindent[8] R. STORN and K. PRICE, “Differential Evolution:
+a simple and efficient heuristic for global
+optimization over continuous spaces”, Journal of
+Global Optimization 11, pp. 331-359, 1997.
+\vspace{10pt}
+
+
+\noindent[9] L. T. BIEGLER and L. JIANG and V. G. FOX, “Recent advances in simulation and optimal
+design of pressure swing adsorption systems”, Separation and Purification Reviews, v. 33,
+n. 1, p. 1-39, 2004.
+\vspace{10pt}
+
+\noindent[10] L. S. PAIS and J. M. LOUREIRO and A. E. RODRIGUES, “Modeling, simulation and operation
+of a simulated moving bed for continuous chromatographic separation of 1,1’-bi-2-
+naphthol enantiomers”, Journal of Chromatography A, v. 827, p. 215-233, 1997.
+\vspace{10pt}
+
+\noindent[11] R. A. LEPPAUS, “Evolução Diferencial para Problemas de Otimização com Restrições Lineares”, 82f. Dissertação de Mestrado(Modelagem Computacional), Universidade Federal de Juiz de Fora, 2016
+\vspace{10pt}
+
+%\section{Agradecimentos}
+%
+%\appendix
+%\section{Apêndices}
+%Use a seção apêndice quando necessário.
+%\subsection{Demonstracões}
+%\subsection{Algoritmos}
+
+%\insertbibliography{Referencias.bib}
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,Referencias}
+
+\end{document}
