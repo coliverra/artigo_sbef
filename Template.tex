@@ -139,7 +139,7 @@ Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima
 Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas são os dados encontrados pelo algoritmo.
 \section{Problema Inverso}
 A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
-, onde $y \in \makefrak{R}^m$ é quantidade medida e $x \in \makefrak{R}^$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Equação 11,
+, onde $y \in \makefrak{R}^m$ é quantidade medida e $x \in \makefrak{R}^n$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Equação 11,
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
 \end{equation}
@@ -177,7 +177,7 @@ sabendo que $\mu_pr$ é a informação a priori e $V$ é a matriz de covariânci
 \begin{equation}
 ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
 \end{equation}
-que substituindo, na Equação 16, as Equações 15 e 12, e resolvendo e manipulando as equações é obtido a Equação 17,
+que substituindo, na Eq. 16, as Eq. 15 e 12, e resolvendo e manipulando as equações é obtido a Equação 17,
 \begin{equation}
 \begin{split}
 ln(p(Z|Y)) = -\frac{1}{2}[(N_{un}+N_d)ln(2\pi)+ln|V^{-1}|+\\
