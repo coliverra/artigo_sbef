@@ -84,7 +84,7 @@ A variável  $q_{i,k}^{eq}$  é a isoterma competitiva de bi-Langmuir que conseg
 q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\frac{H_{i,2} C_{i,k}}{1+K_{A,2} C_{A,k} + K_{B,2} C_{B,k}}
 \end{equation}
 Onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, enquanto que, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio.
-O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Figura 1.
+O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Fig. 1.
 
 Para utilizarmos diferenças finitas para encontrar a solução da equação diferencial ordinária, devemos definir a condição inicial e de contorno que foram abordadas por Silva [4] e usadas nesse trabalho, para correntes de extrato e rafinado na fase móvel, é
 \begin{equation}
@@ -129,21 +129,21 @@ Porém, para o termo advectivo utilizados a técnica da diferença centrada de d
 Utilizamos então o método de Runge-Kutta de 4° Ordem, que é reconhecido pela sua acurácia, para solucionar o sistema de EDO.
 
 \subsection{Simulação do problema direto}
-Na simulação do modelo matemático utilizado, na Figura 2, observa-se uma ótima acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
+Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
 \begin{figure}[!tb] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/problema.pdf} 
 	\caption{Comparação do modelo matemático com os dados experimentais.} 
 \end{figure}
 
-Na Figura 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas são os dados encontrados pelo algoritmo.
+Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas são os dados encontrados pelo algoritmo.
 \section{Problema Inverso}
 A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
 , onde $y \in \makefrak{R}^m$ é quantidade medida e $x \in \makefrak{R}^$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Equação 11,
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
 \end{equation}
-sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado [2], esses dados experimentais sintéticos são demonstrados na Figura 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
+sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado [2], esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
 \begin{figure}[!tb] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
@@ -159,7 +159,7 @@ p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(
 \end{equation}
 em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experimentais e calculados, $Z$ é o vetor de parâmetro, $W$ é a matriz de covariância dos erros experimentais e $N_d$ é a quantidade de dados experimentais.
 
-A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Equação 13, a qual resulta em parâmetros com variância mínima,
+A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima,
 \begin{equation}
 R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
 \end{equation}
@@ -179,11 +179,18 @@ ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
 \end{equation}
 que substituindo, na Equação 16, as Equações 15 e 12, e resolvendo e manipulando as equações é obtido a Equação 17,
 \begin{equation}
-ln(p(Z|Y)) = -\frac{1}{2}[(N_{un}+N_d)ln(2\pi)+ln|V^{-1}|+ln|W^{-1}|+F_{map}(Z)]
+\begin{split}
+ln(p(Z|Y)) = -\frac{1}{2}[(N_{un}+N_d)ln(2\pi)+ln|V^{-1}|+\\
+ln|W^{-1}|+F_{map}(Z)]
+\end{split}
 \end{equation} 
 tomando que a função $F{map}(Z)$, é
+\vspace{10pt}
 \begin{equation}
-F_{map}(Z)=([Y-C(Z)]^TW^{-1}[Y-C(Z)]+[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
+\begin{split}
+F_{map}(Z)=([Y-C(Z)]^TW^{-1}[Y-C(Z)]+\\
+[Z- \mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
+\end{split}
 \end{equation}
 Supondo que vetor $Z$ maximiza $ln(p(Z|Y))$ é igual a $max(p(Z|Y))$, então implica na Equação 19,
 \begin{equation}
@@ -197,7 +204,10 @@ Descrito como um algoritmo que tem como função a manipulação de uma populaç
 
 Inicialmente, é gerado uma população de números $N_pop$ a partir da Equação 20,
 \begin{equation}
-X_{i,j}=X_{j,lower}+r_{ij} (X_{j,upper}-X_{j,lower})
+\begin{split}
+X_{i,j}=X_{j,lower}+r_{ij} (X_{j,upper}-X_{j,lower}),\\
+i = 1,...,N_{pop}, j =1, ..., N_p
+\end{split}
 \end{equation}
 onde $X_{j,lower}$ e $X_{j,upper}$ são intervalo de busca mínimo e máximo, respectivamente, $N_p$ é a quantidade de parâmetros e $r_{ij}$ é o número real aleatório gerado dentro do intervalo de 0 a 1.
 
