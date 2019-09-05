@@ -174,7 +174,7 @@ onde $q(Z)$ é a probabilidade \textit{a priori}, ou seja, é a probabilidade da
 \begin{equation}
 q(Z)=2\pi^{\frac{-N_{un}}{2}}|V^{-\frac{1}{2}}| \times exp(-\frac{1}{2}[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
 \end{equation} 
-sabendo que $\mu_pr$ é a informação a priori e $V$ é a matriz de covariância, e então aplicando a função de logaritmo natural ao teorema geral de Bayes, obtermos a Equação 16
+sabendo que $\mu_{pr}$ é a informação a priori e $V$ é a matriz de covariância, e então aplicando a função de logaritmo natural ao teorema geral de Bayes, obtermos a Equação 16
 \begin{equation}
 ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
 \end{equation}
@@ -203,7 +203,7 @@ O algoritmo de evolução diferencial é um algoritmo, que tem como finalidade a
 
 Descrito como um algoritmo que tem como função a manipulação de uma população $N_{pop}$ indivíduos, que representam as soluções da otimização[11]. Ao passar das gerações, esses candidatos passas por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
 
-Inicialmente, é gerado uma população de números $N_pop$ a partir da Equação 20,
+Inicialmente, é gerado uma população de números $N_{pop}$ a partir da Equação 20,
 \begin{equation}
 \begin{split}
 X_{i,j}=X_{j,lower}+r_{ij} (X_{j,upper}-X_{j,lower}),\\
@@ -212,7 +212,7 @@ i = 1,...,N_{pop}, j =1, ..., N_p
 \end{equation}
 onde $X_{j,lower}$ e $X_{j,upper}$ são intervalo de busca mínimo e máximo, respectivamente, $N_p$ é a quantidade de parâmetros e $r_{ij}$ é o número real aleatório gerado dentro do intervalo de 0 a 1.
 
-Após a geração da população entra em fase a parte de \textit{mutação} dos indivíduos. Todos os indivíduos da população são modificados através da Equação 21, onde é retirada a diferença entre dois indivíduos  diferentes $X_{l_2}$, $X_{l_3}$, escolhido aleatoriamente e feito produto com uma taxa de perturbação $F$, gerado aleatoriamente entre 0 e 2, e então somado ao vetor de referência $X_{l_1}$, para gerar um terceiro indivíduo.
+Após a geração da população entra em fase a parte de \textit{mutação} dos indivíduos. Todos os indivíduos da população são modificados através da Eq. 21, onde é retirada a diferença entre dois indivíduos  diferentes $X_{l_2}$, $X_{l_3}$, escolhido aleatoriamente e feito produto com uma taxa de perturbação $F$, gerado aleatoriamente entre 0 e 2, e então somado ao vetor de referência $X_{l_1}$, para gerar um terceiro indivíduo.
 \begin{equation}
 X_{l,new}=X_{l_1} + F(X_{l_2} - X_{l_3})
 \end{equation}

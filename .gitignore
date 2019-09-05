@@ -1,4 +1,5 @@
 *.aux
 *.out
 *.synctex
-Template.log'
+*.log
+*.gz
