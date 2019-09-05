@@ -1,3 +1,4 @@
+\\
 %% Template base para a elaboração do trabalho completo a ser enviado ao XIV Simpósio Brasileiro de Engenharia Física 
 
 \documentclass[por]{Template_SBEF}
@@ -59,11 +60,11 @@ O modelo matemático empregado para descrever a transferência de massa na colun
 
 Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method of Line – MOL}) para resolver as equações diferenciais parciais que descreve o fenômeno de transporte de massa da coluna. Por diferenças finitas são resolvidas e transformadas em equações diferenciais ordinárias (EDO) e resolvidas pelo método Runge-Kutta de 4° ordem.
 
-Obtendo valores aceitáveis na modelagem do problema direto comparados a literatura. São analisadas estratégias para solução do problema inverso para estimar os parâmetros através desses dados obtidos. Para considerá-los como dados experimentais é necessário adicionar ruído, assim obtém-se valores experimentais sintéticos.
+Obtendo valores aceitáveis na modelagem do problema direto comparados a literatura para a separação dos componentes de bi-naftol. São analisadas estratégias para solução do problema inverso para estimar os parâmetros através desses dados obtidos. Para considerá-los como dados experimentais é necessário adicionar ruído, assim obtém-se valores experimentais sintéticos.
 
-A solução inversa é executada em duas etapas baseadas no uso da estimativa \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa, é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa, é a aplicação da estimativa com informação a Priori, onde é dado a estimativa de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
+A solução inversa é executada em duas etapas baseadas no uso da estimativa \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa, é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa, é a aplicação da estimativa com informação a Priori, onde é dado a informações de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
 
-Esse trabalho tem como premissa analisar as estimativas e a influência exercida pelo algoritmo de minimização, no caso é \textit{Evolução Diferencial.}
+Esse trabalho tem como premissa analisar as estimativas e a influência exercida pelo algoritmo de minimização.
 
 
 \section{Modelo Matemático}
@@ -77,7 +78,7 @@ onde,
 \begin{equation}
 i = A,B, k = 1,...,N_C, l = 1,...,N_S 
 \end{equation}
-em que A,B são os componentes da solução a ser separada, $N_s$ é o número de seções e $N_c$ número de colunas por seção. As propriedades, $\vareplison_b$ é a porosidade da coluna, o $v_l$ é a velocidade da fase móvel, e os coeficientes $D_{ax}$ e $k_{eff,i}$  são respectivamente, o coeficiente de dispersão axial e o coeficiente de transferência de massa[3].
+em que A,B são os componentes da solução a ser separada, $N_s$ é o número de seções e $N_c$ número de colunas por seção. As propriedades, $\varepsilon_b$ é a porosidade da coluna, o $v_l$ é a velocidade da fase móvel, e os coeficientes $D_{ax}$ e $k_{eff,i}$  são respectivamente, o coeficiente de dispersão axial e o coeficiente de transferência de massa[3].
 
 A variável  $q_{i,k}^{eq}$  é a isoterma competitiva de bi-Langmuir que consegue modelar o fenômeno de adsorção do enantiômero.
 \begin{equation}
@@ -118,7 +119,7 @@ Porém, a equação de advecção é usada na saída da coluna conforme[7] repre
 \section{Problema Direto}
 A solução do problema direto é essencial para o algoritmo estimar os parâmetros utilizados para os dados experimentais. Por isso, precise que ela seja fiel em simular os dados experimentais reportados na literatura.
 
-Para solucionar numericamente as Equações Diferenciais Parciais (EDP) com o Método de Linhas (MOL) é aplicada a aproximação utilizando a técnica da diferença centrada de segunda ordem para resolver a equação do termo difusivo, chegando à Equação 9,
+Para solucionar numericamente as Equações Diferenciais Parciais (EDP) com o Método de Linhas (MOL) é aplicada a aproximação utilizando a técnica da diferença centrada de segunda ordem para resolver a equação do termo difusivo, chegando à Eq. 9,
 \begin{equation}
 \frac{\partial^2 C_{i,k}}{\partial x^2} = D_{ax}(\frac{C_{i,k}^{n,j-1} - 2C_{i,k}^{n,j} + C_{i,k}^{n,j+1}}{2\Delta x})
 \end{equation}
@@ -126,7 +127,7 @@ Porém, para o termo advectivo utilizados a técnica da diferença centrada de d
 \begin{equation}
 \frac{\partial C_{i,k}}{\partial x} = - v_l (\frac{C_{i,k}^{n,j+1} - C_{i,k}^{n,j-1}}{2\Delta x})
 \end{equation}
-Utilizamos então o método de Runge-Kutta de 4° Ordem, que é reconhecido pela sua acurácia, para solucionar o sistema de EDO.
+Utilizamos então o método de Runge-Kutta de 4 [QUARTA] Ordem, que é reconhecido pela sua acurácia, para solucionar o sistema de EDO.
 
 \subsection{Simulação do problema direto}
 Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
@@ -136,20 +137,20 @@ Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima
 	\caption{Comparação do modelo matemático com os dados experimentais.} 
 \end{figure}
 
-Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas são os dados encontrados pelo algoritmo.
+Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas representam os dados encontrados pelo algoritmo.
 \section{Problema Inverso}
 A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
-, onde $y \in \makefrak{R}^m$ é quantidade medida e $x \in \makefrak{R}^n$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Equação 11,
+, onde $y \in \mathfrak{R}^m$ é quantidade medida e $x \in \mathfrak{R}^n$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Eq. 11,
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
 \end{equation}
 sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado [2], esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
-\begin{figure}[!tb] 
+\begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
 	\caption{Dados analíticos comparados aos dados experimentais sintéticos.} 
 \end{figure}
-O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori, onde essas se dividem em duas situações respectivamente,  quando não se tem nenhuma informação a priori e quando há informações.
+O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori(MAP), onde essas se dividem em duas situações respectivamente,  quando não existe ou existe informação a priori.
 
 Essas estimativas permitem determinar dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
 \section{Máxima Verossimilhança}
@@ -165,11 +166,11 @@ R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
 \end{equation}
 
 \section{Máximo a Posteriori(MAP)}
-Essa estimativa, se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros ma fpra de uma distribuição Gaussiana, e que $Y$ e $Z$ são independentes, e então, é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
+Essa estimativa, se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros na forma de uma distribuição Gaussiana, e que $Y$ e $Z$ são independentes, e então, é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
 \begin{equation}
 p(Z|Y)= \frac{p(Y|Z)q(Z)}{p(Y)}
 \end{equation}
-onde $q(Z)$ é a probabilidade \textit{a priori}, ou seja, é a probabilidade da amostra para o parâmetro $Z$, podendo ser estimado pela Equação 15,
+onde $q(Z)$ é a probabilidade \textit{a priori}, ou seja, é a probabilidade da amostra para o parâmetro $Z$, podendo ser estimado pela Eq. 15,
 \begin{equation}
 q(Z)=2\pi^{\frac{-N_{un}}{2}}|V^{-\frac{1}{2}}| \times exp(-\frac{1}{2}[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
 \end{equation} 
@@ -177,7 +178,7 @@ sabendo que $\mu_pr$ é a informação a priori e $V$ é a matriz de covariânci
 \begin{equation}
 ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
 \end{equation}
-que substituindo, na Eq. 16, as Eq. 15 e 12, e resolvendo e manipulando as equações é obtido a Equação 17,
+que substituindo, na Eq. 16, as Eq. 15 e 12, e resolvendo e manipulando as equações é obtido a Eq. 17,
 \begin{equation}
 \begin{split}
 ln(p(Z|Y)) = -\frac{1}{2}[(N_{un}+N_d)ln(2\pi)+ln|V^{-1}|+\\
@@ -192,7 +193,7 @@ F_{map}(Z)=([Y-C(Z)]^TW^{-1}[Y-C(Z)]+\\
 [Z- \mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
 \end{split}
 \end{equation}
-Supondo que vetor $Z$ maximiza $ln(p(Z|Y))$ é igual a $max(p(Z|Y))$, então implica na Equação 19,
+Supondo que vetor $Z$ maximiza $ln(p(Z|Y))$ é igual a $max(p(Z|Y))$, então implica na Eq. 19,
 \begin{equation}
 _\mathbf{Z}^{max} p(Z|Y) \Leftrightarrow _\mathbf{Z}^{max} [ln(p(Z|Y))] \Leftrightarrow _\mathbf{Z}^{min} [F_{map}(Z)]
 \end{equation}
