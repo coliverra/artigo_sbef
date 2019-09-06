@@ -152,15 +152,35 @@ sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados exp
 \end{figure}
 O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori(MAP), onde essas se dividem em duas situações respectivamente,  quando não existe ou existe informação a priori.
 
-Essas estimativas permitem determinar dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
+E como critério de escolha dos parâmetros que serão estimados pelas abordagens, é necessário analisar a influência dos parâmetros sobre os dados dos perfis de concentração, por isso é feito estudo da sensibilidade desses parâmetros através de gráficos de sensibilidade. O parâmetros ideais para uso em estimativa, serão os que apresentarem alta ou baixa sensibilidade e não apresentar dependência a outro parâmetro\cite{lugon}. Foi escolhidos os parâmetros do número da coeficiente de Henry para o componente A da solução para o sítio 1 e 2, apresentado respectivamente nas Fig. 4 e 5. A motivação para escolha desses parâmetros é por que apresentaram alta sensibilidade que aumenta as chances de encontrar estimativas precisas, segundo a literatura\cite{vasconcelos}. 
+
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/SensibilidadeCa-all.pdf} 
+	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,1}$ [Fonte: Oliveira, 2016]} 
+\end{figure}
+
+
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=.8\columnwidth]{Arquivos/SensibilidadeCb-all.pdf} 
+	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,2}$ [Fonte: Oliveira, 2016]} 
+\end{figure}
+
+
+Essas estimativas permitem determinar uma aproximação dos dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
 \section{Máxima Verossimilhança}
 A estimativa por Máxima Verossimilhança (Maximum Likelihood Estimation – MLE) funciona através do ajuste de dados estimando os parâmetros através de modelos estatísticos. A função objetivo é a distância do modelo calculado e os dados experimentais. Quando se admite que o modelo é perfeito e as flutuações dos erros experimentais são conhecidas e com distribuição normal, tem-se a função de densidade de probabilidade dos desvios entre o experimento, que deve ser maximizada. Nesse caso, a função é dada por Kaipio \& Somersalo \cite{kapio_book}.
 \begin{equation}
-p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(Z)]^T W^{-1}[T-C(Z)])
+\begin{split}
+p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(Z)]^T\\ W^{-1}[T-C(Z)])
+\end{split}
 \end{equation}
-em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experimentais e calculados, $Z$ é o vetor de parâmetro, $W$ é a matriz de covariância dos erros experimentais e $N_d$ é a quantidade de dados experimentais.
+em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experimentais e calculados, $Z$ é o vetor de parâmetro, $W$ é a matriz de covariância dos erros experimentais e $N_d$ é a quantidade de dados.
 
-A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima,
+A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima.
 \begin{equation}
 R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
 \end{equation}
@@ -230,20 +250,6 @@ As análises de sensibilidade dos parâmetros, apresentado na literatura \cite{c
 
 
 %XXXXXXXXXXXXXX
-
-\begin{figure}[H] 
-	\centering
-	\includegraphics[width=.8\columnwidth]{Arquivos/SensibilidadeCa-all.pdf} 
-	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,1}$ [Fonte: Oliveira, 2016]} 
-\end{figure}
-
-
-
-\begin{figure}[H] 
-	\centering
-	\includegraphics[width=.8\columnwidth]{Arquivos/SensibilidadeCb-all.pdf} 
-	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,2}$ [Fonte: Oliveira, 2016]} 
-\end{figure}
 
 
 
