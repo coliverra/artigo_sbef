@@ -1,4 +1,4 @@
-\\
+
 %% Template base para a elaboração do trabalho completo a ser enviado ao XIV Simpósio Brasileiro de Engenharia Física 
 
 \documentclass[por]{Template_SBEF}
@@ -52,13 +52,13 @@ A cromatografia, largamente usada na indústria química e bioquímica, é um m�
 
 Então, durante a passagem da fase móvel um elemento da solução se encontra mais retido que o outro, resultando assim a migração diferencial dos componentes.
 
-Porém, o sistema de Leito Móvel Simulado (LMS) é descrito como várias colunas cromatográficas interligadas em série em regime de permutação das portas, tem sido bastante empregada na indústria pois permite a separação continua dos componentes, que possibilita uma maior recuperação e produção tornando o processo mais econômico [6]. Nesse trabalho, o sistema LMS é composto por oito colunas divididas em quatro seções.
+Porém, o sistema de Leito Móvel Simulado (LMS) é descrito como várias colunas cromatográficas interligadas em série em regime de permutação das portas, tem sido bastante empregada na indústria pois permite a separação continua dos componentes, que possibilita uma maior recuperação e produção tornando o processo mais econômico \cite{cremasco}. Nesse trabalho, o sistema LMS é composto por oito colunas divididas em quatro seções.
 
 A técnica de separação cromatográfica possui um alto valor agregado, por isso, faz-se necessário o uso de ferramentas para estimar parâmetros operacionais para evitar o desperdício \cite{bihain}.
 
 O modelo matemático empregado para descrever a transferência de massa na coluna foi o Transporte Dispersivo que descreve fielmente a cinética de adsorção em leito fixos [9] e permite o uso da isoterma de bi-Langmuir.
 
-Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method of Line – MOL}) para resolver as equações diferenciais parciais que descreve o fenômeno de transporte de massa da coluna. Por diferenças finitas são resolvidas e transformadas em equações diferenciais ordinárias (EDO) e resolvidas pelo método Runge-Kutta de 4° ordem.
+Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method of Line – MOL}) para resolver as equações diferenciais parciais que descreve o fenômeno de transporte de massa da coluna. Por diferenças finitas são resolvidas e transformadas em equações diferenciais ordinárias (EDO) e resolvidas pelo método Runge-Kutta de 4 ordem.
 
 Obtendo valores aceitáveis na modelagem do problema direto comparados a literatura para a separação dos componentes de bi-naftol. São analisadas estratégias para solução do problema inverso para estimar os parâmetros através desses dados obtidos. Para considerá-los como dados experimentais é necessário adicionar ruído, assim obtém-se valores experimentais sintéticos.
 
@@ -87,7 +87,7 @@ q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\frac{
 Onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, enquanto que, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio.
 O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Fig. 1.
 
-Para utilizarmos diferenças finitas para encontrar a solução da equação diferencial ordinária, devemos definir a condição inicial e de contorno que foram abordadas por Silva [4] e usadas nesse trabalho, para correntes de extrato e rafinado na fase móvel, é
+Para utilizarmos diferenças finitas para encontrar a solução da equação diferencial ordinária, devemos definir a condição inicial e de contorno que foram abordadas por Silva \cite{silva_mest} e usadas nesse trabalho, para correntes de extrato e rafinado na fase móvel, é
 \begin{equation}
 C_{i,k}(t,x_k = 0) = C_{i,k-1}(t, x_{k-1} = L_c), k = 2, ... , N_c
 \end{equation}
@@ -154,7 +154,7 @@ O problema inverso se baseia na comparação de duas estimativas,  ambas resolvi
 
 Essas estimativas permitem determinar dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
 \section{Máxima Verossimilhança}
-A estimativa por Máxima Verossimilhança (Maximum Likelihood Estimation – MLE) funciona através do ajuste de dados estimando os parâmetros através de modelos estatísticos. A função objetivo é a distância do modelo calculado e os dados experimentais. Quando se admite que o modelo é perfeito e as flutuações dos erros experimentais são conhecidas e com distribuição normal, tem-se a função de densidade de probabilidade dos desvios entre o experimento, que deve ser maximizada. Nesse caso, a função é dada por Kaipio \& Somersalo[5].
+A estimativa por Máxima Verossimilhança (Maximum Likelihood Estimation – MLE) funciona através do ajuste de dados estimando os parâmetros através de modelos estatísticos. A função objetivo é a distância do modelo calculado e os dados experimentais. Quando se admite que o modelo é perfeito e as flutuações dos erros experimentais são conhecidas e com distribuição normal, tem-se a função de densidade de probabilidade dos desvios entre o experimento, que deve ser maximizada. Nesse caso, a função é dada por Kaipio \& Somersalo \cite{kapio_book}.
 \begin{equation}
 p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(Z)]^T W^{-1}[T-C(Z)])
 \end{equation}
@@ -162,9 +162,8 @@ em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experi
 
 A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima,
 \begin{equation}
-R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c} [Y_i - C_i(Z)]^2
+R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
 \end{equation}
-
 \section{Máximo a Posteriori(MAP)}
 Essa estimativa, se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros na forma de uma distribuição Gaussiana, e que $Y$ e $Z$ são independentes, e então, é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
 \begin{equation}
@@ -226,7 +225,7 @@ X_{l,new}, \mathrm{se} r_1 < C_r \mathrm{ou} j = j_{rand}\\
 \end{equation}
 
 \section{Resultados e Discussões}
-As análises de sensibilidade dos parâmetros, apresentado na literatura[3]m é essencial para verificar a sua influência nos perfis de concentrações das substâncias. Nas figuras, são apresentados gráficos de sensibilidade para o parâmetro $H_{A,1}$ e para o parâmetro $H_{B,1}$, respectivamente, mostrando que é possível estimar adequadamente os parâmetros $H_{i,1}$, sabendo os outros valores da isoterma de bi-Langmuir.
+As análises de sensibilidade dos parâmetros, apresentado na literatura \cite{claudir_tese} é essencial para verificar a sua influência nos perfis de concentrações das substâncias. Nas figuras, são apresentados gráficos de sensibilidade para o parâmetro $H_{A,1}$ e para o parâmetro $H_{B,1}$, respectivamente, mostrando que é possível estimar adequadamente os parâmetros $H_{i,1}$, sabendo os outros valores da isoterma de bi-Langmuir.
 
 
 

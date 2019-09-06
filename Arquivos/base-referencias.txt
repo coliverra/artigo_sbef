@@ -1,0 +1,73 @@
+\noindent[1] A. L. J. BIHAIN, “Desenvolvimento e avaliação de
+novas abordagens de modelagem de
+processos de separação em leito móvel simulado”, Tese
+(Doutorado em Modelagem
+Computacional) – Instituto Politécnico, Universidade do
+Estado do Rio de Janeiro, 2014
+
+
+
+\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA
+and J. L. JUNIOR and A. J. S. NETO,
+“Estimação de parâmetros cinéticos de transferência de
+massa em cromatografia
+utilizando o número de estágios de equilíbrio como
+parâmetro de ajuste”, In: ENCONTRO
+DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
+Modelagem Computacional. Uberlândia - MG, 2012.
+
+
+
+\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA and J. L. JUNIOR and A. J. S.  NETO,
+“Estimação de parâmetros cinéticos de transferência de massa em cromatografia
+utilizando o número de estágios de equilíbrio como parâmetro de ajuste”, In: ENCONTRO
+DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
+Modelagem Computacional. Uberlândia - MG, 2012.
+
+
+
+\noindent[3] C. OLIVEIRA, “Solução de problemas diretos e inversos para separação cromatográfica
+em equipamentos de Leito Móvel Simulado”, 128f. Dissertação (Doutorado em Modelagem Computacional) – Universidade do Estado do Rio de Janeiro, 2016.
+
+
+
+\noindent[4] E. A. B. SILVA, “Modelagem e Simulação Numérica de uma Unidade de Leito Móvel
+Simulado”, 2000. 140f. Dissertação (Mestrado em Engenharia Química) - Universidade
+Federal de Santa Catarina, 2000.
+
+
+
+\noindent[5] E. S. J KAIPIO, “ Statistical and Computational Inverse Problems”, New York: Springer, p. 339,
+2005
+
+
+
+\noindent[6] M. A. CREMASCO and B. J. HRITZKO and N. H. L. WANG, “Experimental Purification
+of Paclitaxel from a complex mixture of Taxanes using a Simulated Moving Bed”,
+Brazilian Journal of Chemical Engineering, v. 26, n. 1, p. 207-218, 2009.
+
+
+
+\noindent[7] J. HAAG and V. A. WOUWER and S. LEHOUCQ and P. SAUCEZ, “ Modeling and
+simulation of a SMB chromatographic process designed for enantioseparation”, Control
+Eng. Pract. , n. 9, v. 921, 2001.
+
+
+
+\noindent[8] R. STORN and K. PRICE, “Differential Evolution:
+a simple and efficient heuristic for global
+optimization over continuous spaces”, Journal of
+Global Optimization 11, pp. 331-359, 1997.
+
+
+
+\noindent[9] L. T. BIEGLER and L. JIANG and V. G. FOX, “Recent advances in simulation and optimal
+design of pressure swing adsorption systems”, Separation and Purification Reviews, v. 33,
+n. 1, p. 1-39, 2004.
+
+\noindent[10] L. S. PAIS and J. M. LOUREIRO and A. E. RODRIGUES, “Modeling, simulation and operation
+of a simulated moving bed for continuous chromatographic separation of 1,1’-bi-2-
+naphthol enantiomers”, Journal of Chromatography A, v. 827, p. 215-233, 1997.
+
+
+\noindent[11] R. A. LEPPAUS, “Evolução Diferencial para Problemas de Otimização com Restrições Lineares”, 82f. Dissertação de Mestrado(Modelagem Computacional), Universidade Federal de Juiz de Fora, 2016
