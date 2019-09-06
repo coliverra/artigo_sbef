@@ -82,7 +82,10 @@ em que A,B são os componentes da solução a ser separada, $N_s$ é o número d
 
 A variável  $q_{i,k}^{eq}$  é a isoterma competitiva de bi-Langmuir que consegue modelar o fenômeno de adsorção do enantiômero.
 \begin{equation}
-q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\frac{H_{i,2} C_{i,k}}{1+K_{A,2} C_{A,k} + K_{B,2} C_{B,k}}
+\begin{split}
+q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\\
+\frac{H_{i,2} C_{i,k}}{1+K_{A,2} C_{A,k} + K_{B,2} C_{B,k}}
+\end{split}
 \end{equation}
 Onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, enquanto que, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio.
 O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Fig. 1.
@@ -152,7 +155,7 @@ sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados exp
 \end{figure}
 O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori(MAP), onde essas se dividem em duas situações respectivamente,  quando não existe ou existe informação a priori.
 
-E como critério de escolha dos parâmetros que serão estimados pelas abordagens, é necessário analisar a influência dos parâmetros sobre os dados dos perfis de concentração, por isso é feito estudo da sensibilidade desses parâmetros através de gráficos de sensibilidade. O parâmetros ideais para uso em estimativa, serão os que apresentarem alta ou baixa sensibilidade e não apresentar dependência a outro parâmetro\cite{lugon}. Foi escolhidos os parâmetros do número da coeficiente de Henry para o componente A da solução para o sítio 1 e 2, apresentado respectivamente nas Fig. 4 e 5. A motivação para escolha desses parâmetros é por que apresentaram alta sensibilidade que aumenta as chances de encontrar estimativas precisas, segundo a literatura\cite{vasconcelos}. 
+E como critério de escolha dos parâmetros que serão estimados pelas abordagens, é necessário analisar a influência dos parâmetros sobre os dados dos perfis de concentração, por isso é feito estudo da sensibilidade desses parâmetros através de gráficos de sensibilidade\cite{claudir_tese}. O parâmetros ideais para uso em estimativa, serão os que apresentarem alta ou baixa sensibilidade e não apresentar dependência a outro parâmetro\cite{lugon}. Foi escolhidos os parâmetros do número da coeficiente de Henry para o componente A da solução para o sítio 1 e 2, apresentado respectivamente nas Fig. 4 e 5. A motivação para escolha desses parâmetros é por que apresentaram alta sensibilidade que aumenta as chances de encontrar estimativas precisas, segundo a literatura\cite{vasconcelos}. 
 
 
 \begin{figure}[H] 
@@ -238,14 +241,14 @@ X_{l,new}=X_{l_1} + F(X_{l_2} - X_{l_3})
 Sendo que esse novo indivíduo deve passar pela etapa de cruzamento, que é o processo de decisão para adicionar o novo indivíduo a população, se não, é mantido  indivíduo anterior $X_{l_1}$m representado pela Equação 22, que $C_r$ é a probabilidade de mutação, e $r_1$ é o número real aleatório do intervalo de 0 a 1.
 \begin{equation}
 X_l= \left\{\begin{matrix}
-X_{l,new}, \mathrm{se} r_1 < C_r \mathrm{ou} j = j_{rand}\\
- X_{l_1}, \mathrm{caso contrário}
+X_{l,new},\hspace{7pt} \mathrm{se}\hspace{7pt} r_1 < C_r \hspace{7pt}\mathrm{ou} \hspace{7pt} j = j_{rand}\\
+ X_{l_1},\hspace{7pt} \mathrm{caso} \hspace{7pt}\mathrm{contrário}
 
 \end{matrix}\right.
 \end{equation}
 
 \section{Resultados e Discussões}
-As análises de sensibilidade dos parâmetros, apresentado na literatura \cite{claudir_tese} é essencial para verificar a sua influência nos perfis de concentrações das substâncias. Nas figuras, são apresentados gráficos de sensibilidade para o parâmetro $H_{A,1}$ e para o parâmetro $H_{B,1}$, respectivamente, mostrando que é possível estimar adequadamente os parâmetros $H_{i,1}$, sabendo os outros valores da isoterma de bi-Langmuir.
+
 
 
 
