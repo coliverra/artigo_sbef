@@ -54,7 +54,7 @@ Então, durante a passagem da fase móvel um elemento da solução se encontra m
 
 Porém, o sistema de Leito Móvel Simulado (LMS) é descrito como várias colunas cromatográficas interligadas em série em regime de permutação das portas, tem sido bastante empregada na indústria pois permite a separação continua dos componentes, que possibilita uma maior recuperação e produção tornando o processo mais econômico [6]. Nesse trabalho, o sistema LMS é composto por oito colunas divididas em quatro seções.
 
-A técnica de separação cromatográfica possui um alto valor agregado, por isso, faz-se necessário o uso de ferramentas para estimar parâmetros operacionais para evitar o desperdício [1].
+A técnica de separação cromatográfica possui um alto valor agregado, por isso, faz-se necessário o uso de ferramentas para estimar parâmetros operacionais para evitar o desperdício \cite{bihain}.
 
 O modelo matemático empregado para descrever a transferência de massa na coluna foi o Transporte Dispersivo que descreve fielmente a cinética de adsorção em leito fixos [9] e permite o uso da isoterma de bi-Langmuir.
 
@@ -78,7 +78,7 @@ onde,
 \begin{equation}
 i = A,B, k = 1,...,N_C, l = 1,...,N_S 
 \end{equation}
-em que A,B são os componentes da solução a ser separada, $N_s$ é o número de seções e $N_c$ número de colunas por seção. As propriedades, $\varepsilon_b$ é a porosidade da coluna, o $v_l$ é a velocidade da fase móvel, e os coeficientes $D_{ax}$ e $k_{eff,i}$  são respectivamente, o coeficiente de dispersão axial e o coeficiente de transferência de massa[3].
+em que A,B são os componentes da solução a ser separada, $N_s$ é o número de seções e $N_c$ número de colunas por seção. As propriedades, $\varepsilon_b$ é a porosidade da coluna, o $v_l$ é a velocidade da fase móvel, e os coeficientes $D_{ax}$ e $k_{eff,i}$  são respectivamente, o coeficiente de dispersão axial e o coeficiente de transferência de massa\cite{claudir_tese}.
 
 A variável  $q_{i,k}^{eq}$  é a isoterma competitiva de bi-Langmuir que consegue modelar o fenômeno de adsorção do enantiômero.
 \begin{equation}
@@ -144,7 +144,7 @@ A solução do problema inverso é uma estimativa dos parâmetros usados para co
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
 \end{equation}
-sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado [2], esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
+sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado \cite{claudir_emmc}, esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
@@ -162,7 +162,7 @@ em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experi
 
 A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima,
 \begin{equation}
-R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
+R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c} [Y_i - C_i(Z)]^2
 \end{equation}
 
 \section{Máximo a Posteriori(MAP)}
@@ -219,8 +219,8 @@ X_{l,new}=X_{l_1} + F(X_{l_2} - X_{l_3})
 Sendo que esse novo indivíduo deve passar pela etapa de cruzamento, que é o processo de decisão para adicionar o novo indivíduo a população, se não, é mantido  indivíduo anterior $X_{l_1}$m representado pela Equação 22, que $C_r$ é a probabilidade de mutação, e $r_1$ é o número real aleatório do intervalo de 0 a 1.
 \begin{equation}
 X_l= \left\{\begin{matrix}
-X_{l,new}, \mathrm{se} r_1 < C_r \mathrm{ou} j = j_{rand}
-\\ X_{l_1}, \mathrm{caso contrário}
+X_{l,new}, \mathrm{se} r_1 < C_r \mathrm{ou} j = j_{rand}\\
+ X_{l_1}, \mathrm{caso contrário}
 
 \end{matrix}\right.
 \end{equation}
@@ -299,85 +299,10 @@ No término das execuções, foi calculado o resultado para obter a média o des
 
  
 \section{Conclusão}
+Concluimos que 
 
 
-\section{Referências}
 
-\noindent[1] A. L. J. BIHAIN, “Desenvolvimento e avaliação de
-novas abordagens de modelagem de
-processos de separação em leito móvel simulado”, Tese
-(Doutorado em Modelagem
-Computacional) – Instituto Politécnico, Universidade do
-Estado do Rio de Janeiro, 2014
-\vspace{10pt}
-
-
-\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA
-and J. L. JUNIOR and A. J. S. NETO,
-“Estimação de parâmetros cinéticos de transferência de
-massa em cromatografia
-utilizando o número de estágios de equilíbrio como
-parâmetro de ajuste”, In: ENCONTRO
-DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
-Modelagem Computacional. Uberlândia - MG, 2012.
-\vspace{10pt}
-
-
-\noindent[2] C. OLIVEIRA and F. MATOS and L. D. T. CÂMARA and J. L. JUNIOR and A. J. S.  NETO,
-“Estimação de parâmetros cinéticos de transferência de massa em cromatografia
-utilizando o número de estágios de equilíbrio como parâmetro de ajuste”, In: ENCONTRO
-DE MODELAGEM COMPUTACIONAL , 15., 2012, Uberlândia, MG. XV Encontro de
-Modelagem Computacional. Uberlândia - MG, 2012.
-\vspace{10pt}
-
-
-\noindent[3] C. OLIVEIRA, “Solução de problemas diretos e inversos para separação cromatográfica
-em equipamentos de Leito Móvel Simulado”, 128f. Dissertação (Doutorado em Modelagem Computacional) – Universidade do Estado do Rio de Janeiro, 2016.
-\vspace{10pt}
-
-
-\noindent[4] E. A. B. SILVA, “Modelagem e Simulação Numérica de uma Unidade de Leito Móvel
-Simulado”, 2000. 140f. Dissertação (Mestrado em Engenharia Química) - Universidade
-Federal de Santa Catarina, 2000.
-\vspace{10pt}
-
-
-\noindent[5] E. S. J KAIPIO, “ Statistical and Computational Inverse Problems”, New York: Springer, p. 339,
-2005
-\vspace{10pt}
-
-
-\noindent[6] M. A. CREMASCO and B. J. HRITZKO and N. H. L. WANG, “Experimental Purification
-of Paclitaxel from a complex mixture of Taxanes using a Simulated Moving Bed”,
-Brazilian Journal of Chemical Engineering, v. 26, n. 1, p. 207-218, 2009.
-\vspace{10pt}
-
-
-\noindent[7] J. HAAG and V. A. WOUWER and S. LEHOUCQ and P. SAUCEZ, “ Modeling and
-simulation of a SMB chromatographic process designed for enantioseparation”, Control
-Eng. Pract. , n. 9, v. 921, 2001.
-\vspace{10pt}
-
-
-\noindent[8] R. STORN and K. PRICE, “Differential Evolution:
-a simple and efficient heuristic for global
-optimization over continuous spaces”, Journal of
-Global Optimization 11, pp. 331-359, 1997.
-\vspace{10pt}
-
-
-\noindent[9] L. T. BIEGLER and L. JIANG and V. G. FOX, “Recent advances in simulation and optimal
-design of pressure swing adsorption systems”, Separation and Purification Reviews, v. 33,
-n. 1, p. 1-39, 2004.
-\vspace{10pt}
-
-\noindent[10] L. S. PAIS and J. M. LOUREIRO and A. E. RODRIGUES, “Modeling, simulation and operation
-of a simulated moving bed for continuous chromatographic separation of 1,1’-bi-2-
-naphthol enantiomers”, Journal of Chromatography A, v. 827, p. 215-233, 1997.
-\vspace{10pt}
-
-\noindent[11] R. A. LEPPAUS, “Evolução Diferencial para Problemas de Otimização com Restrições Lineares”, 82f. Dissertação de Mestrado(Modelagem Computacional), Universidade Federal de Juiz de Fora, 2016
-\vspace{10pt}
 
 %\section{Agradecimentos}
 %
