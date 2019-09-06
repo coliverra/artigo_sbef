@@ -56,7 +56,7 @@ Porém, o sistema de Leito Móvel Simulado (LMS) é descrito como várias coluna
 
 A técnica de separação cromatográfica possui um alto valor agregado, por isso, faz-se necessário o uso de ferramentas para estimar parâmetros operacionais para evitar o desperdício \cite{bihain}.
 
-O modelo matemático empregado para descrever a transferência de massa na coluna foi o Transporte Dispersivo que descreve fielmente a cinética de adsorção em leito fixos [9] e permite o uso da isoterma de bi-Langmuir.
+O modelo matemático empregado para descrever a transferência de massa na coluna foi o Transporte Dispersivo que descreve fielmente a cinética de adsorção em leito fixos \cite{Jiang} e permite o uso da isoterma de bi-Langmuir.
 
 Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method of Line – MOL}) para resolver as equações diferenciais parciais que descreve o fenômeno de transporte de massa da coluna. Por diferenças finitas são resolvidas e transformadas em equações diferenciais ordinárias (EDO) e resolvidas pelo método Runge-Kutta de 4 ordem.
 
@@ -137,7 +137,7 @@ Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima
 	\caption{Comparação do modelo matemático com os dados experimentais.} 
 \end{figure}
 
-Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura[10] do modelo matemático usado. Enquanto que as linhas representam os dados encontrados pelo algoritmo.
+Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura\cite{pais} do modelo matemático usado. Enquanto que as linhas representam os dados encontrados pelo algoritmo.
 \section{Problema Inverso}
 A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
 , onde $y \in \mathfrak{R}^m$ é quantidade medida e $x \in \mathfrak{R}^n$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Eq. 11,
@@ -200,7 +200,7 @@ onde $Z$ corresponde ao vetor das amostras aleatórias com média $\mu$ e matriz
 \section{Evolução Diferencial (DE)}
 O algoritmo de evolução diferencial é um algoritmo, que tem como finalidade a otimização de uma função, é eficiente e simples que se trata de um método estocástico que se inspira na teoria da evolução e seleção natural \cite{Storn}.
 
-Descrito como um algoritmo que tem como função a manipulação de uma população $N_{pop}$ indivíduos, que representam as soluções da otimização[11]. Ao passar das gerações, esses candidatos passas por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
+Descrito como um algoritmo que tem como função a manipulação de uma população $N_{pop}$ indivíduos, que representam as soluções da otimização\cite{leppaus}. Ao passar das gerações, esses candidatos passas por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
 
 Inicialmente, é gerado uma população de números $N_{pop}$ a partir da Equação 20,
 \begin{equation}
