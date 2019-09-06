@@ -64,7 +64,7 @@ Obtendo valores aceitáveis na modelagem do problema direto comparados a literat
 
 A solução inversa é executada em duas etapas baseadas no uso da estimativa \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa, é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa, é a aplicação da estimativa com informação a Priori, onde é dado a informações de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
 
-Esse trabalho tem como premissa analisar as estimativas e a influência exercida pelo algoritmo de minimização.
+Esse trabalho tem como premissa analisar o método estocástico para minimização da função objetivo, e sua influência na estimativa.
 
 
 \section{Modelo Matemático}
@@ -147,7 +147,7 @@ A solução do problema inverso é uma estimativa dos parâmetros usados para co
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
 \end{equation}
-sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado \cite{claudir_emmc}, esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,025$ dando a porcentagem total de ruído de 5\%.
+sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados experimentais com ruído simulado \cite{claudir_emmc}, esses dados experimentais sintéticos são demonstrados na Fig. 3, que mostra no gráfico a linha da função para os parâmetros calculados e os pontos os dados experimentais sintéticos com $\sigma_Y = 0,05$ dando a porcentagem total de ruído de 5\%.
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
@@ -282,7 +282,7 @@ No término das execuções, foi calculado o resultado para obter a média o des
 
 \begin{table}[!h]
 	\centering
-	\caption{Intervalo de busca e valores de referência.} \label{tabela-2}
+	\caption{Resultado da estimativa com valor de referência} \label{tabela-2}
 	{\small
 		\begin{tabular}{ccccc}			
 			\hline
@@ -307,7 +307,7 @@ No término das execuções, foi calculado o resultado para obter a média o des
 
  
 \section{Conclusão}
-Concluimos que 
+Já que o intuito desse trabalho é a analisar o modelo estocástico de Evolução Diferencial na minimização da função objetivo, logo, o trabalho apresentou bons resultados comparados a outros modelos citados na literatura, como por Oliveira\cite{claudir_tese}. Porém, a abordagem \textit{a posteriori} se mostrou desnecessária para estimativa desses parâmetros que são bem definidos segunda a análise de sensibilidade. O tempo de execução da estimativa para cada abordagem é de 45 minutos, podendo assim ser considerado o uso desse método, como eficaz e rápido, em aplicações reais pode ser uma ferramenta importante para análise e gerenciamento de sistemas LMS.
 
 
 
