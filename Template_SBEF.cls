@@ -60,6 +60,7 @@
 \usepackage{ae,aecompl}
 \usepackage{pifont}
 \usepackage{pslatex}
+
 \usepackage[samesize]{cancel}
 \usepackage{graphicx}
 \usepackage{setspace}
@@ -71,8 +72,30 @@
 \bibpunct{[}{]}{;}{n}{}{,}
 \usepackage{float}
 \usepackage{lmodern}
-%\usepackage{academicons}
-%\definecolor{orcidlogocol}{HTML}{A6CE39}
+\usepackage{algpseudocode,algorithm}	% pseudo-codigo
+
+% Declaracoes
+\algrenewcommand\algorithmicend{\textbf{fim}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicfor{\textbf{para}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicreturn{\textbf{devolve}}
+\algrenewcommand\algorithmicfunction{\textbf{função}}
+
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+\algnewcommand\algorithmicto{\textbf{até}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1 $\gets$ #2 \algorithmicto\ #3 \algorithmicdo}
+
+% Novos comandos
+\newcommand{\mei}{\leqslant} 		% menor ou igual
 
 
 
