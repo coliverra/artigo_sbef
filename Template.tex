@@ -48,7 +48,7 @@
 
 \section{Introdução}
 
-A cromatografia, largamente usada na indústria química e bioquímica, é um método de separação usado nas áreas de pesquisas e produção. Essa técnica baseia-se na presença de duas fases imiscíveis, onde elas normalmente determinam o método cromatográfico utilizado, que são a fase estacionária e a móvel. Nesse trabalho, a fase móvel é a solução que contém os componentes que se deseja separar. A fase estacionária é responsável pela separação dos componentes, pois a fase móvel move-se através dela, tornando possível a sua separação através de sua interação físico-química com a solução. 
+A cromatografia, largamente usada na indústria química e bioquímica, é um método de separação usado nas áreas de pesquisas e produção. Essa técnica baseia-se na presença de duas fases imiscíveis, onde elas normalmente determinam o método cromatográfico utilizado, que são a fase estacionária e a móvel. Nesse trabalho a fase móvel é a solução que contém os componentes que se deseja separar. A fase estacionária é responsável pela separação dos componentes pois a fase móvel move-se através dela, tornando possível a sua separação através de sua interação físico-química com a solução. 
 
 Então, durante a passagem da fase móvel um elemento da solução se encontra mais retido que o outro, resultando assim a migração diferencial dos componentes.
 
@@ -62,13 +62,13 @@ Na modelagem numérica da coluna utiliza-se o Métodos de Linhas (\textit{Method
 
 Obtendo valores aceitáveis na modelagem do problema direto comparados a literatura para a separação dos componentes de bi-naftol. São analisadas estratégias para solução do problema inverso para estimar os parâmetros através desses dados obtidos. Para considerá-los como dados experimentais é necessário adicionar ruído, assim obtém-se valores experimentais sintéticos.
 
-A solução inversa é executada em duas etapas baseadas no uso da estimativa \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa, é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa, é a aplicação da estimativa com informação a Priori, onde é dado a informações de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
+A solução inversa é executada em duas etapas baseadas no uso da estimativa da \textit{Máxima Verossimilhança} e \textit{Máximo a Posteriori} onde sua solução numérica é encontrada a partir do algoritmo de Evolução diferencial (\textit{Differential Evolution – DE}). A primeira etapa é sua aplicação ao método de mínimos quadrados que permite achar a solução apenas com os resultados experimentais e seu modelo matemático. A segunda etapa é a aplicação da estimativa com informação a Priori onde é dado a informações de um parâmetro para facilitar o algoritmo a encontrar uma estimativa da solução.
 
 Esse trabalho tem como premissa analisar o método estocástico para minimização da função objetivo, e sua influência na estimativa.
 
 
 \section{Modelo Matemático}
-   O modelo de Transporte Dispersivo usado, é criado a partir da primeira lei de Fick que são equações diferenciais que explica o funcionamento de fenômenos como a difusão de matéria. Nesse trabalho, descreverá o fenômeno de transferência de massa ao longo da coluna cromatográfica e o balanço de massa entre a fase líquida e sólida.
+  O modelo de Transporte Dispersivo usado é criado a partir da primeira lei de Fick e são equações diferenciais que explica o funcionamento de fenômenos como a difusão de matéria. Nesse trabalho descreverá o fenômeno de transferência de massa ao longo da coluna cromatográfica e o balanço de massa entre a fase líquida e sólida.
 \begin{equation}
 \frac{\partial C_{i,k}}{\partial t} + (\frac{1-\varepsilon_b}{\varepsilon_b}
 ) K_{eff,i} (q_{i,k}^{eq} - q_{i,k}) = D_{ax} \frac{\partial^2 C_{i,k}}{\partial x^2} 
@@ -87,8 +87,7 @@ q_{A,k}^{eq} = \frac{H_{i,1} C_{i,k}}{1+K_{A,1} C_{A,k} + K_{B,1} C{B,k}}+\\
 \frac{H_{i,2} C_{i,k}}{1+K_{A,2} C_{A,k} + K_{B,2} C_{B,k}}
 \end{split}
 \end{equation}
-Onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, enquanto que, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio.
-O problema do sistema SMB apresentado contém quatro portas que comutam periodicamente, como apresentado na Fig. 1.
+onde, $H_{i,1}$ e $H_{i,2}$ é a propriedade de saturação dos sítios, $K_{i,1}$ e $K_{i,2}$ é a constante de equilíbrio dos componentes em cada sítio. 
 
 Para utilizarmos diferenças finitas para encontrar a solução da equação diferencial ordinária, devemos definir a condição inicial e de contorno que foram abordadas por Silva \cite{silva_mest} e usadas nesse trabalho, para correntes de extrato e rafinado na fase móvel, é
 \begin{equation}
@@ -108,7 +107,7 @@ C_{i,5}(t,x_5 = 0) = \frac{v_2 C_{i,4}(t,x_4 = L_c) + v_fC_{i,f}}{v_3}
  \caption{Esquema do sistema LMS para oito colunas[Fonte: Oliveira, 2016].} \label{fig-1}
 \end{figure}
 
-em que a velocidade de alimentação e a concentração injetada do componente, são representadas respectivamente por, $v_f$ e $C_{i,f}$.
+em que a velocidade de alimentação e a concentração injetada do componente são representadas respectivamente por $v_f$ e $C_{i,f}$.
 
 Porém, a equação de advecção é usada na saída da coluna conforme \cite{haag} representado pela equação,
 \begin{equation}
@@ -120,7 +119,7 @@ Porém, a equação de advecção é usada na saída da coluna conforme \cite{ha
  \end{equation}
 
 \section{Problema Direto}
-A solução do problema direto é essencial para o algoritmo estimar os parâmetros utilizados para os dados experimentais. Por isso, precise que ela seja fiel em simular os dados experimentais reportados na literatura.
+A solução do problema direto é essencial para o algoritmo estimar os parâmetros utilizados para os dados experimentais. Por isso é necessário que ela seja fiel em simular os dados experimentais reportados na literatura.
 
 Para solucionar numericamente as Equações Diferenciais Parciais (EDP) com o Método de Linhas (MOL) é aplicada a aproximação utilizando a técnica da diferença centrada de segunda ordem para resolver a equação do termo difusivo, chegando à Eq. 9,
 \begin{equation}
@@ -130,19 +129,19 @@ Porém, para o termo advectivo utilizados a técnica da diferença centrada de d
 \begin{equation}
 \frac{\partial C_{i,k}}{\partial x} = - v_l (\frac{C_{i,k}^{n,j+1} - C_{i,k}^{n,j-1}}{2\Delta x})
 \end{equation}
-Utilizamos então o método de Runge-Kutta de 4 [QUARTA] Ordem, que é reconhecido pela sua acurácia, para solucionar o sistema de EDO.
+Foi utilizado o método de Runge-Kutta de 4 Ordem que é reconhecido pela sua acurácia para solucionar o sistema de EDO.
 
 \subsection{Simulação do problema direto}
-Na simulação do modelo matemático utilizado, na Fig. 2, observa-se uma ótima acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
+Na simulação do modelo matemático utilizado (ver Fig. 2), observa-se boa acurácia com os resultados experimentais na separação de enantiômeros de bi-naftol.
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/problema.pdf} 
 	\caption{Comparação do modelo matemático com os dados experimentais.} 
 \end{figure}
 
-Na Fig. 2, os componentes do gráfico têm a seguinte explicação. Os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura\cite{pais} do modelo matemático usado. Enquanto que as linhas representam os dados encontrados pelo algoritmo.
+Na Fig. 2 os símbolos \ding{108} e \ding{117} são os valores de concentrações obtidos experimentalmente, enquanto que os $\vartriangle$ e \ding{53} são os resultados analíticos, encontrado na literatura\cite{pais} do modelo matemático usado. Enquanto que as linhas representam os dados encontrados pelo algoritmo.
 \section{Problema Inverso}
-A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
+A solução do problema inverso é uma estimativa dos parâmetros usados para conseguir um conjunto de dados que representa os parâmetros do modelo. Em uma função, descrevemos que desejamos encontrar o valor de $x$ a partir dos valores de $y$, dessa forma, descrita como $y = f(x, \varepsilon_Y)$ , onde $\varepsilon_Y$ é o erro relacionado ao ruído e modelo utilizado. O modelo utilizado, é $f:\mathfrak{R}^n \times \mathfrak{R}^m \Rightarrow \mathfrak{R}^M$ 
 , onde $y \in \mathfrak{R}^m$ é quantidade medida e $x \in \mathfrak{R}^n$ é o número de parâmetros a ser encontrado. Os ruídos sintéticos utilizados nesse trabalho foram gerados seguindo a Eq. 11,
 \begin{equation}
 Y = \widetilde{Y} + \varepsilon_{\widetilde{Y}}, \varepsilon_{\widetilde{Y}} \sim N(0, \sigma_{\widetilde{Y}})
@@ -153,18 +152,14 @@ sabendo que $\widetilde{Y}$ são os dados experimentais reais e $Y$ os dados exp
 	\includegraphics[width=.8\columnwidth]{Arquivos/plot.pdf} 
 	\caption{Dados analíticos comparados aos dados experimentais sintéticos.} 
 \end{figure}
-O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que encontrará o mínimo da função objetivo, sendo essas a abordagem da Máxima Verossimilhança(MLE) e Máximo a Posteriori(MAP), onde essas se dividem em duas situações respectivamente,  quando não existe ou existe informação a priori.
+O problema inverso se baseia na comparação de duas estimativas,  ambas resolvidas pelo algoritmo de Evolução Diferencial que determinará o mínimo da função objetivo por meior da abordagem da Máxima Verossimilhança (MLE), que é quando não existe nenhuma infomação a priori e a Máxima a Posteriori (MAP) que neste caso, supoem-se que existe alguma informação a priori a respeito da solução.
 
-E como critério de escolha dos parâmetros que serão estimados pelas abordagens, é necessário analisar a influência dos parâmetros sobre os dados dos perfis de concentração, por isso é feito estudo da sensibilidade desses parâmetros através de gráficos de sensibilidade\cite{claudir_tese}. O parâmetros ideais para uso em estimativa, serão os que apresentarem alta ou baixa sensibilidade e não apresentar dependência a outro parâmetro\cite{lugon}. Foi escolhidos os parâmetros do número da coeficiente de Henry para o componente A da solução para o sítio 1 e 2, apresentado respectivamente nas Fig. 4 e 5. A motivação para escolha desses parâmetros é por que apresentaram alta sensibilidade que aumenta as chances de encontrar estimativas precisas, segundo a literatura\cite{vasconcelos}. 
-
-
+Como critério de escolha dos parâmetros que serão estimados pelas abordagens é necessário analisar a influência dos parâmetros sobre os dados dos perfis de concentração. Por isso é necessário o estudo de sensibilidade desses parâmetros. Neste trabalho utilizou-se as análise já realizadas para os parâmetros de acordo com \cite{claudir_tese}. Os parâmetros ideais para uso em estimativa é necessário que estes sejam linearmente independente \cite{lugon}. Foram escolhidos os parâmetros correspondente ao coeficiente de Henry para a componente A da solução para o sítio 1 e 2 apresentada, respectivamente, nas Fig. 4 e 5. A motivação para escolha desses parâmetros é que este apresentaram alta sensibilidade, o que aumenta as chances de encontrar estimativas precisas, segundo a literatura\cite{vasconcelos}. 
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\columnwidth]{Arquivos/SensibilidadeCa-all.pdf} 
 	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,1}$ [Fonte: Oliveira, 2016]} 
 \end{figure}
-
-
 
 \begin{figure}[H] 
 	\centering
@@ -172,8 +167,7 @@ E como critério de escolha dos parâmetros que serão estimados pelas abordagen
 	\caption{Gráfico de sensibilidade com o parâmetro $H_{A,2}$ [Fonte: Oliveira, 2016]} 
 \end{figure}
 
-
-Essas estimativas permitem determinar uma aproximação dos dados que não podem ser obtidos experimentalmente ou são muito caros para serem obtidos.
+Essas estimativas permitem determinar uma aproximação dos dados que não podem ser obtidos experimentalmente ou são muito caros computacionamente para serem obtidos.
 \section{Máxima Verossimilhança}
 A estimativa por Máxima Verossimilhança (Maximum Likelihood Estimation – MLE) funciona através do ajuste de dados estimando os parâmetros através de modelos estatísticos. A função objetivo é a distância do modelo calculado e os dados experimentais. Quando se admite que o modelo é perfeito e as flutuações dos erros experimentais são conhecidas e com distribuição normal, tem-se a função de densidade de probabilidade dos desvios entre o experimento, que deve ser maximizada. Nesse caso, a função é dada por Kaipio \& Somersalo \cite{kapio_book}.
 \begin{equation}
@@ -183,12 +177,13 @@ p(Y|Z)= \frac{1}{\sqrt{(2\pi)^{N_d}}}|W|^\frac{1}{2}\times exp(-\frac{1}{2}[Y-C(
 \end{equation}
 em que $Y$ e $C$ são vetores que correspondem respectivamente, aos dados experimentais e calculados, $Z$ é o vetor de parâmetro, $W$ é a matriz de covariância dos erros experimentais e $N_d$ é a quantidade de dados.
 
-A função da máxima verosimilhança é um problema de otimização, que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portante é utilizada no procedimento de inversão é dada pela Eq. 13, a qual resulta em parâmetros com variância mínima.
-\begin{equation}
+A função da máxima verosimilhança é um problema de otimização que se faz necessária minimizar o funcional de resíduos quadrados entre as quantidades de medidas experimentalmente e os valores calculados pelo modelo. A função objetivo, portanto, é utilizada no procedimento de inversão e é dada pela Eq. \ref{equacaoresiduo} a qual resulta em parâmetros com variância mínima.
+\begin{equation}\label{equacaoresiduo}
 R(Z) = [Y_i - C_i(Z)]^T [Y_i - C_i (Z)] = \sum_{i=0}^{N_c}[Y_i - C_i(Z)]^2
 \end{equation}
+
 \section{Máximo a Posteriori(MAP)}
-Essa estimativa, se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros na forma de uma distribuição Gaussiana, e que $Y$ e $Z$ são independentes, e então, é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
+Essa estimativa se desenvolve da premissa de que existem informações \textit{a priori} dos parâmetros na forma de uma distribuição Gaussiana e que $Y$ e $Z$ são independentes e então é utilizada para a minimização da função objetivo. Do teorema de Bayes tem-se que,
 \begin{equation}
 p(Z|Y)= \frac{p(Y|Z)q(Z)}{p(Y)}
 \end{equation}
@@ -196,7 +191,7 @@ onde $q(Z)$ é a probabilidade \textit{a priori}, ou seja, é a probabilidade da
 \begin{equation}
 q(Z)=2\pi^{\frac{-N_{un}}{2}}|V^{-\frac{1}{2}}| \times exp(-\frac{1}{2}[Z-\mu_{pr}]^T V^{-1}[Z-\mu_{pr}])
 \end{equation} 
-sabendo que $\mu_{pr}$ é a informação a priori e $V$ é a matriz de covariância, e então aplicando a função de logaritmo natural ao teorema geral de Bayes, obtermos a Equação 16
+sabendo que $\mu_{pr}$ é a informação a priori e $V$ é a matriz de covariância. Aplicando a função de logaritmo natural ao teorema geral de Bayes, obtem-se a Eq. 16,
 \begin{equation}
 ln(p(Z|Y))=ln(q(Z))+ln(p(Y|Z))-ln(p(Y))
 \end{equation}
@@ -219,11 +214,12 @@ Supondo que vetor $Z$ maximiza $ln(p(Z|Y))$ é igual a $max(p(Z|Y))$, então imp
 \begin{equation}
 _\mathbf{Z}^{max} p(Z|Y) \Leftrightarrow _\mathbf{Z}^{max} [ln(p(Z|Y))] \Leftrightarrow _\mathbf{Z}^{min} [F_{map}(Z)]
 \end{equation}
-onde $Z$ corresponde ao vetor das amostras aleatórias com média $\mu$ e matriz de covariância conhecida $V$ que introduzem informação \textit{a priori} a respeito do vetor $Z$. A minimização de $F_{map}$ produz estimativas de $Z$ que maximizam a distribuição \textit{a posteriori} $p(Z|Y)$.
-\section{Evolução Diferencial (DE)}
-O algoritmo de evolução diferencial é um algoritmo, que tem como finalidade a otimização de uma função, é eficiente e simples que se trata de um método estocástico que se inspira na teoria da evolução e seleção natural \cite{Storn}.
+onde, $Z$ corresponde ao vetor das amostras aleatórias com média $\mu$ e matriz de covariância conhecida $V$ que introduzem informação \textit{a priori} a respeito do vetor $Z$. A minimização de $F_{map}$ produz estimativas de $Z$ que maximizam a distribuição \textit{a posteriori} $p(Z|Y)$.
 
-Descrito como um algoritmo que tem como função a manipulação de uma população $N_{pop}$ indivíduos, que representam as soluções da otimização\cite{leppaus}. Ao passar das gerações, esses candidatos passas por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
+\section{Evolução Diferencial (DE)}
+O algoritmo de evolução diferencial é um algoritmo que tem como finalidade a otimização de uma função. É um método estocástico que se inspira na teoria da evolução e seleção natural \cite{Storn}.
+
+É descrito como um algoritmo que tem como função a manipulação de uma população de indivíduos $N_{pop}$ que representam as soluções da otimização \cite{leppaus}. Ao passar das gerações esses candidatos passam por processos nomeados de \textit{mutação} e \textit{cruzamento}, que tem o intuito de criar soluções melhores para que possam passar pela \textit{seleção} para poder iniciar uma nova geração.
 
 Inicialmente, é gerado uma população de números $N_{pop}$ a partir da Equação 20,
 \begin{equation}
@@ -249,18 +245,7 @@ X_{l,new},\hspace{7pt} \mathrm{se}\hspace{7pt} r_1 < C_r \hspace{7pt}\mathrm{ou}
 
 \section{Resultados e Discussões}
 
-
-
-
-%XXXXXXXXXXXXXX
-
-
-
-
-
-%XXXXXXXXXXXXX
-Sabendo a influência dos parâmetros no perfil de concentração é possível estimar a partir dos métodos de \textit{máxima verosimilhança} e \textit{máximo a posteriori}. Com 13 execuções foi possível analisar a estimativa a partir do método DE, para minimização da função objetivo, foi definido com probabilidade de mutação $C_r = 0,9$ e o número da população $N_{pop} = 30$ como critério de parada sendo o número de gerações igual a 80, também definindo o intervalo de busca e os valores de referência de acordo com [10] para cada parâmetro, apresentado na Tab. 1.
-
+Sabendo a influência dos parâmetros no perfil de concentração, é possível estimar a partir dos métodos de \textit{máxima verosimilhança} e \textit{máximo a posteriori}. Para este trabalho foram utilizados 13 execuções visando obter um conjunto de soluções a partir do método DE. A probabilidade de mutação foi definido com $C_r = 0,9$ e o número da população $N_{pop} = 30$ como critério de parada sendo o número de gerações igual a 80. Também foi definindo o intervalo de busca de acordo com os valores de referência para cada parâmetro, apresentado na Tab. 1.
 \begin{table}[!h]
 	\centering
 	\caption{Intervalo de busca para o modelo estocástico.} \label{tabela-1}
@@ -277,9 +262,7 @@ Sabendo a influência dos parâmetros no perfil de concentração é possível e
 			\hline
 	\end{tabular}}
 \end{table}
-No término das execuções, foi calculado o resultado para obter a média o desvio padrão e o coeficiente de variação desses parâmetros, da isoterma de bi-Langmuir para substância A, para estimativa MLE e MAP para serem apresentados na Tab. 2.
-
-
+No término das execuções foram calculados a média o desvio padrão e o coeficiente de variação dos parâmetros da isoterma para as estimativas do MLE e MAP conforme apresentado na Tab. 2.
 \begin{table}[!h]
 	\centering
 	\caption{Resultado da estimativa com valor de referência} \label{tabela-2}
@@ -304,10 +287,10 @@ No término das execuções, foi calculado o resultado para obter a média o des
 	\end{tabular}}
 \end{table}
 
-O desvio padrão relativo ou coeficiente de variação é a formula apresentada por $\mu/\sigma \times 100$ que é um número adimensional que serve para comparar dispersão de dados diferentes unidades e médias, que no problema, aponta que a desvio do parâmetro $H_{A,2}$ é maior em relação ao $H_{A,1}$, mostrando que a sensibilidade influência na precisão na estimativa de bons parâmetros.
+O desvio padrão relativo ou coeficiente de variação é dado por $\mu/\sigma \times 100$ que representa um número adimensional que serve para analizar a variabilidade de dados e é utilizada quando se quer fazer comparações da variação de conjuntos de soluções que são diferentes na média. Para os parâmetros em estudo mostra-se que quanto menor for o seu valor, mais homogêneos são os conjuntos obtidos pelas estratégias.
  
 \section{Conclusão}
-Já que o intuito desse trabalho é a analisar o modelo estocástico de Evolução Diferencial na minimização da função objetivo, logo, o trabalho apresentou bons resultados comparados a outros modelos citados na literatura, como por Oliveira\cite{claudir_tese}. Porém, a abordagem \textit{a posteriori} se mostrou desnecessária para estimativa desses parâmetros que são bem definidos segunda a análise de sensibilidade. O uso desse método foi classificado como eficaz, em aplicações reais pode ser uma ferramenta importante para análise e gerenciamento de sistemas LMS.
+O intuito deste trabalho foi analisar o modelo estocástico de Evolução Diferencial na minimização da função objetivo. Considerando os resultados apresentados, verifica-se que o método se mostra promissor considerando os resultados de outros modelos citados na literatura, como por Oliveira\cite{claudir_tese}. Verifica-se que abordagem \textit{a posteriori} não se mostrou eficiente para esta aplicação. Isso pode ser justificado pelo os ajustes dos desvios padrão utilizados, correspondente a informação a priori. Pode-se considerar, no entanto, que o método foi eficaz em aplicações reais. Como trabalho futuro, o método será aplicado para a determinação dos demais parâmetros existente no modelo usado, conforme identificados nos gráficos da análise de sensibilidade.
 
 
 
